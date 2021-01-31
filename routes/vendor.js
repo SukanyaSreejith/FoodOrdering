@@ -53,14 +53,14 @@ router.get('/logout',(req,res)=>{
 router.get('/view-products', function(req, res, next) {
   vendorHelpers.getAllProducts().then((products)=>{
     console.log(products);
-    res.render('vendor/view-products',{products,vendordashboard:true,vendor:true,tableStyle:true})
+    res.render('vendor/view-products',{products,vendor:true})
 
   })
   
 });
 
 router.get('/add-product', function(req, res) {
-  res.render('vendor/add-product',{vendordashboard:true,vendor:true,wrtPage:true,tableStyle:true})
+  res.render('vendor/add-product',{vendor:true})
   });
   
   router.post('/add-product',(req,res)=>{
@@ -74,7 +74,7 @@ router.get('/add-product', function(req, res) {
         if(!err){
           vendorHelpers.getAllProducts().then((products)=>{
          
-          res.render("vendor/view-products",{products,vendordashboard:true,vendor:true,tableStyle:true})
+          res.render("vendor/view-products",{products,vendor:true})
           })
         }else{
           console.log(err);
@@ -96,7 +96,7 @@ router.get('/add-product', function(req, res) {
 
   router.get('/edit-product/:id',async(req,res)=>{
     let product=await vendorHelpers.getProductEdit(req.params.id)
-    res.render('vendor/edit-product',{product,vendordashboard:true,tableStyle:true,vendor:true,wrtPage:true})
+    res.render('vendor/edit-product',{product,vendor:true})
     
   })
 
@@ -105,7 +105,7 @@ router.get('/add-product', function(req, res) {
     vendorHelpers.updateProduct(req.params.id,req.body).then(()=>{
     })
     vendorHelpers.getAllProducts().then((products)=>{
-     res.redirect('/vendor/view-products',{products,vendordashboard:true,vendor:true,tableStyle:true})
+     res.redirect('/vendor/view-products',{products,vendor:true})
       if(req.files.Image){
         let image=req.files.image
         image.mv('./public/product-images/'+id+'.jpg')
@@ -115,7 +115,7 @@ router.get('/add-product', function(req, res) {
   })
   router.get('/view-orders',async(req,res)=>{
     let orders=await vendorHelpers.getUserOrders()
-    res.render('vendor/view-orders',{orders,vendor:true,vendordashboard:true,tableStyle:true})
+    res.render('vendor/view-orders',{orders,vendor:true})
   })
 
 
