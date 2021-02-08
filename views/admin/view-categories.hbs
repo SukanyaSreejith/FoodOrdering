@@ -1,0 +1,84 @@
+
+{{!-- 
+<section>
+  
+    <div class="container" id="table-align">
+         <div class="row mt-4" >
+           <a href="/admin/add-category" class="btn btn-primary pull-right" >Add Category</a>
+           
+    </div>
+        <table class="table">
+  <thead>
+    <tr>
+      <th><h1>ID</h1></th>
+      <th><h1>CATEGORY NAME</h1></th>
+      <th><h1>ACTIONS</h1></th>
+    
+    </tr>
+  </thead>
+  <tbody>
+     {{#each categories}}
+    <tr>
+      <th scope="row">1</th>
+      <td>{{this.categoryname}}</td>
+      <td>
+      <a href="/admin/edit-category/{{this._id}}" class="btn btn-primary">Edit</a>
+      <a href="/admin/delete-category/{{this._id}}" class="btn btn-danger" onclick="return confirm('Are you sure to delete {{this.categoryname}}')">Delete</a>
+      </td>
+    </tr>
+    {{/each}}
+    
+  </tbody>
+</table>
+    </div>
+</section>
+
+ --}}
+
+
+<div class="col-10" style="text-align: justify;margin-top:100px;">
+  {{#if Remove}}
+   <p class="error" style="color: white;font-size:medium;font-weight:bolder">Item removed</p>
+   {{/if}}
+  <h2>View Categories</h2> 
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>CATEGORY NAME</th>
+        <th>ACTIONS</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each categories}}
+      <tr>
+      <th scope="row">1</th>
+     <td style="width: fit-content;">{{this.categoryname}}</td>
+    <td>
+        <a href="/admin/edit-vendor/{{this._id}}" class="btn btn-primary">Edit</a>
+        <a href="/admin/block-vendor/{{this._id}}" class="btn btn-danger" onclick="return confirm('Are you sure to block {{this.name}}')">Block</a>
+    </td>
+    </tr> 
+   {{/each}}
+    </tbody>
+  </table>
+  
+     <div class="float-right pr-5"> 
+     <a href="/admin/add-category" class="btn btn-primary mt-3" style="background: light;font-size:medium;color:white;font-weight:bold;width:200px;height:40px" ><b>Add Category</b></a> 
+    </div>
+     </div>
+     </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

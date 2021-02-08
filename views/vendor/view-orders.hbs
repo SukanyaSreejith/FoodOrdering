@@ -1,0 +1,48 @@
+<div class="col-10" style="text-align: justify;margin-top:75px">
+           <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Customer Name</th>
+      <th scope="col">Mobile No</th>
+      <th scope="col">Address</th>
+      <th scope="col">Date</th>
+      <th scope="col">Status</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+      {{#each orders}}
+      <tr>
+          <th scope="row">1</th>
+          <td>{{this.deliveryDetails.name}}</td>
+          <td>{{this.deliveryDetails.mobile}}</td>
+          <td>{{this.deliveryDetails.address}}</td>
+          <td>{{this.date2}}</td>
+          {{!-- <td>{{this.status}}</td> --}}
+           <td>
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Active
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Delivered</a>
+                        <a class="dropdown-item" href="#">Pending</a>
+                         <a class="dropdown-item" href="#">shipped</a>
+                    </div>
+                </div>
+            </td>
+       
+      </tr>
+      {{/each}}
+  </tbody>
+</div>
+
+
+<script>
+  $(function(){
+   $(".dropdown-menu").on('click', 'a', function(){
+       $(this).parents('.dropdown').find('button').text($(this).text());
+   });
+});
+</script>
