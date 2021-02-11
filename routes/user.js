@@ -107,7 +107,12 @@ router.get('/cart',verifyLogin,async(req,res)=>{
     let userDet=req.session.user
     let products=await userHelpers.getCartProducts(req.session.user._id)
     let totalValue=await userHelpers.getTotalAmount(req.session.user._id)
+    if(totalValue===0){
+      res.render('user/cart-empty',{user:req.session.user,user:true,userDet})
+    }else{
+
     res.render('user/cart',{products,user:req.session.user,totalValue,user:true,userDet})
+    }
   }
   })
 
@@ -234,8 +239,8 @@ router.post('/verify-payment',(req,res)=>{
 
 })
 
-router.get('/explore',async(req,res)=>{
-  res.render('user/explore')
+router.get('/cart-empty',async(req,res)=>{
+  res.render('user/cart-empty',{user:true})
 })
 router.get('/our-bakers', async(req,res)=>{
    adminHelpers.getAllVendors().then((vendors)=>{

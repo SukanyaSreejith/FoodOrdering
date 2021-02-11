@@ -298,8 +298,9 @@ getTotalAmount:(userId)=>{
            
            
         ]).toArray()
+      
         if(total.length===0){
-            resolve()
+            resolve(0)
         }else{
             resolve(total[0].total) //needs only items
         }
